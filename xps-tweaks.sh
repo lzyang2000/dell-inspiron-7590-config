@@ -35,44 +35,44 @@ fi
 sed -i '/RESTORE_DEVICE_STATE_ON_STARTUP/s/=.*/=1/' /etc/default/tlp
 systemctl restart tlp
 
-# Install the latest nVidia driver and codecs
-echo -e "${GREEN}Do you wish to enable PRIME Offloading on the NVIDIA GPU? This may increase battery drain but will allow dynamic switching of the NVIDIA GPU without having to log out.${NC}"
-select yn in "Yes" "No"; do
-	case $yn in
-	    Yes )
-            # Add repository with Xorg Builds containing required NVIDIA patches.
-	    if [ "$release" != "eoan" ]; then
-	    	add-apt-repository -y ppa:aplattner/ppa
+# # Install the latest nVidia driver and codecs
+# echo -e "${GREEN}Do you wish to enable PRIME Offloading on the NVIDIA GPU? This may increase battery drain but will allow dynamic switching of the NVIDIA GPU without having to log out.${NC}"
+# select yn in "Yes" "No"; do
+# 	case $yn in
+# 	    Yes )
+#             # Add repository with Xorg Builds containing required NVIDIA patches.
+# 	    if [ "$release" != "eoan" ]; then
+# 	    	add-apt-repository -y ppa:aplattner/ppa
 
-            # Enable Proprietary GPU PPA
-            add-apt-repository -y ppa:graphics-drivers/ppa
+#             # Enable Proprietary GPU PPA
+#             add-apt-repository -y ppa:graphics-drivers/ppa
 
-            apt -y update
-            apt -y upgrade
-            apt -y install nvidia-driver-435 nvidia-settings # 435 is the minimum version to use PRIME offloading.
+#             apt -y update
+#             apt -y upgrade
+#             apt -y install nvidia-driver-435 nvidia-settings # 435 is the minimum version to use PRIME offloading.
 
-            # Create simple script for launching programs on the NVIDIA GPU
-            echo '__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME="nvidia" __VK_LAYER_NV_optimus="NVIDIA_only" exec "$@"' >> /usr/local/bin/prime
-            chmod +x /usr/local/bin/prime
+#             # Create simple script for launching programs on the NVIDIA GPU
+#             echo '__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME="nvidia" __VK_LAYER_NV_optimus="NVIDIA_only" exec "$@"' >> /usr/local/bin/prime
+#             chmod +x /usr/local/bin/prime
 
-            # Create xorg.conf.d directory (If it doesn't already exist) and copy PRIME configuration file
-            mkdir -p /etc/X11/xorg.conf.d/
-            wget https://raw.githubusercontent.com/JackHack96/dell-xps-9570-ubuntu-respin/master/10-prime-offload.conf
-            mv 10-prime-offload.conf /etc/X11/xorg.conf.d/
-        else
-            apt -y update
-            ubuntu-drivers autoinstall
-	fi
-	break;;
-        No )
-        apt -y update
-        ubuntu-drivers autoinstall
-        break;;
-    esac
-done
+#             # Create xorg.conf.d directory (If it doesn't already exist) and copy PRIME configuration file
+#             mkdir -p /etc/X11/xorg.conf.d/
+#             wget https://raw.githubusercontent.com/JackHack96/dell-xps-9570-ubuntu-respin/master/10-prime-offload.conf
+#             mv 10-prime-offload.conf /etc/X11/xorg.conf.d/
+#         else
+#             apt -y update
+#             ubuntu-drivers autoinstall
+# 	fi
+# 	break;;
+#         No )
+#         apt -y update
+#         ubuntu-drivers autoinstall
+#         break;;
+#     esac
+# done
 
 # Enable modesetting on the NVIDIA Driver (Enables use of offloading and PRIME Sync)
-echo "options nvidia-drm modeset=1" >> /etc/modprobe.d/nvidia-drm.conf
+#echo "options nvidia-drm modeset=1" >> /etc/modprobe.d/nvidia-drm.conf
 
 # Fix Audio Feedback/White Noise from Headphones on Battery Bug
 echo -e "${GREEN}Do you wish to fix the headphone white noise on battery bug? (if you do not have this issue, there is no need to enable it) (may slightly impact battery life)${NC}"
@@ -200,7 +200,7 @@ fi
 apt -y install intel-microcode iucode-tool
 
 # Enable power saving tweaks for Intel chip
-if [[ $(uname -r) == *"4.15"* ]]; then
+if [[ $(uname -r) == *"4.15"* ]]; then #check kernel version
     echo "options i915 enable_fbc=1 enable_guc_loading=1 enable_guc_submission=1 disable_power_well=0 fastboot=1" > /etc/modprobe.d/i915.conf
 else
     echo "options i915 enable_fbc=1 enable_guc=3 disable_power_well=0 fastboot=1" > /etc/modprobe.d/i915.conf
@@ -217,42 +217,45 @@ fi
 update-initramfs -u
 
 # Tweak grub defaults
-GRUB_OPTIONS_VAR_NAME="GRUB_CMDLINE_LINUX_DEFAULT"
-GRUB_OPTIONS="quiet splash acpi_rev_override=1 acpi_osi=Linux nouveau.modeset=0 pcie_aspm=force drm.vblankoffdelay=1 scsi_mod.use_blk_mq=1 nouveau.runpm=0 mem_sleep_default=deep "
-echo -e "${GREEN}Do you wish to disable SPECTRE/Meltdown patches for performance?${NC}"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) GRUB_OPTIONS+="pti=off spectre_v2=off l1tf=off nospec_store_bypass_disable no_stf_barrier"; break;;
-        No ) break;;
-    esac
-done
-GRUB_OPTIONS_VAR="$GRUB_OPTIONS_VAR_NAME=\"$GRUB_OPTIONS\""
+#GRUB_OPTIONS_VAR_NAME="GRUB_CMDLINE_LINUX_DEFAULT"
+#GRUB_OPTIONS="quiet splash acpi_rev_override=1 acpi_osi=Linux nouveau.modeset=0 pcie_aspm=force drm.vblankoffdelay=1 scsi_mod.use_blk_mq=1 nouveau.runpm=0 mem_sleep_default=deep "
 
-if < /etc/default/grub grep "$GRUB_OPTIONS_VAR" &>/dev/null
-then
-    echo -e "${GREEN}Grub is already tweaked!${NC}"
-else
-    sed -i "s/^$GRUB_OPTIONS_VAR_NAME=.*/$GRUB_OPTIONS_VAR_NAME=\"$GRUB_OPTIONS\"/g" /etc/default/grub
-    update-grub
-fi
+#Tweak kernel
+sudo kernelstub -a "acpi_rev_override=1 acpi_osi=Linux nouveau.modeset=0 pcie_aspm=force drm.vblankoffdelay=1 scsi_mod.use_blk_mq=1 nouveau.runpm=0 mem_sleep_default=deep "
+
+# select yn in "Yes" "No"; do
+#     case $yn in
+#         Yes ) GRUB_OPTIONS+="pti=off spectre_v2=off l1tf=off nospec_store_bypass_disable no_stf_barrier"; break;;
+#         No ) break;;
+#     esac
+# done
+# GRUB_OPTIONS_VAR="$GRUB_OPTIONS_VAR_NAME=\"$GRUB_OPTIONS\""
+
+# if < /etc/default/grub grep "$GRUB_OPTIONS_VAR" &>/dev/null
+# then
+#     echo -e "${GREEN}Grub is already tweaked!${NC}"
+# else
+#     sed -i "s/^$GRUB_OPTIONS_VAR_NAME=.*/$GRUB_OPTIONS_VAR_NAME=\"$GRUB_OPTIONS\"/g" /etc/default/grub
+#     update-grub
+# fi
 
 # Ask for disabling tracker
-echo -e "${GREEN}Do you wish to disable GNOME tracker (it uses a lot of power)?${NC}"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) systemctl mask tracker-extract.desktop tracker-miner-apps.desktop tracker-miner-fs.desktop tracker-store.desktop; break;;
-        No ) break;;
-    esac
-done
+# echo -e "${GREEN}Do you wish to disable GNOME tracker (it uses a lot of power)?${NC}"
+# select yn in "Yes" "No"; do
+#     case $yn in
+#         Yes ) systemctl mask tracker-extract.desktop tracker-miner-apps.desktop tracker-miner-fs.desktop tracker-store.desktop; break;;
+#         No ) break;;
+#     esac
+# done
 
 # Ask for disabling fingerprint reader
-echo -e "${GREEN}Do you wish to disable the fingerprint reader to save power (no linux driver is available for this device)?${NC}"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) echo "# Disable fingerprint reader
-        SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"27c6\", ATTRS{idProduct}==\"5395\", ATTR{authorized}=\"0\"" > /etc/udev/rules.d/fingerprint.rules; break;;
-        No ) break;;
-    esac
-done
+# echo -e "${GREEN}Do you wish to disable the fingerprint reader to save power (no linux driver is available for this device)?${NC}"
+# select yn in "Yes" "No"; do
+#     case $yn in
+#         Yes ) echo "# Disable fingerprint reader
+#         SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"27c6\", ATTRS{idProduct}==\"5395\", ATTR{authorized}=\"0\"" > /etc/udev/rules.d/fingerprint.rules; break;;
+#         No ) break;;
+#     esac
+# done
 
 echo -e "${GREEN}FINISHED! Please reboot the machine!${NC}"
