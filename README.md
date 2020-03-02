@@ -58,6 +58,16 @@ sudo prime-select intel
 sudo prime-select nvidia
 ```
 
+**Nvidia**:
+```
+sudo prime-select nvidia
+```
+
+**kernel params**:
+```
+Kernel Boot Options:. loglevel=0 pcie_aspm=force acpi_rev_override=1 mem_sleep_default=deep acpi_osi=Linux scsi_mod.use_blk_mq=1 nouveau.modeset=0 acpi_sleep=nonvs systemd.show_status=false nouveau.runpm=0 splash quiet drm.vblankoffdelay=1 apm=on apm=power-off
+```
+
 **Note: A full reboot could be required when switching graphic cards.**
 
 ## Troubleshooting
