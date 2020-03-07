@@ -73,3 +73,8 @@ Kernel Boot Options:. loglevel=0 pcie_aspm=force acpi_rev_override=1 mem_sleep_d
 ## Troubleshooting
 
 Check the [wiki page](https://github.com/JackHack96/dell-xps-9570-ubuntu-respin/wiki/Troubleshooting) about it.
+
+## Beautify
+[Gnome login change](https://www.ostechnix.com/how-to-change-gdm-login-screen-background-in-ubuntu/)
+[theme](https://www.gnome-look.org/p/1241688/)
+[icon pack](https://www.gnome-look.org/p/1102582/)
