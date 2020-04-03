@@ -78,4 +78,5 @@ Check the [wiki page](https://github.com/JackHack96/dell-xps-9570-ubuntu-respin/
 [Gnome login change](https://www.ostechnix.com/how-to-change-gdm-login-screen-background-in-ubuntu/)  
 [theme](https://www.gnome-look.org/p/1241688/)  
 [icon pack](https://www.gnome-look.org/p/1102582/)  
-[wine chinese input](https://www.lulinux.com/archives/359)
+[wine chinese input](https://www.lulinux.com/archives/359)  
+[Sound-fix](https://www.linuxuprising.com/2018/06/fix-no-sound-dummy-output-issue-in.html)  
