@@ -82,3 +82,4 @@ Check the [wiki page](https://github.com/JackHack96/dell-xps-9570-ubuntu-respin/
 [Sound-fix](https://www.linuxuprising.com/2018/06/fix-no-sound-dummy-output-issue-in.html)  
 [docker-fix](https://stackoverflow.com/questions/48957195/how-to-fix-docker-got-permission-denied-issue)
 [virtualbox](https://www.virtualbox.org/wiki/Download_Old_Builds_6_0)
+[k2](https://github.com/Kurgol/keychron/blob/master/k2.md)
