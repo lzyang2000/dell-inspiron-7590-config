@@ -93,3 +93,4 @@ numlock: sudo gedit /usr/share/X11/xkb/keycodes/evdev, change NMLK to 770
 }  
 ```
 [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)  
+sudo apt-get install gnome-sushi  
