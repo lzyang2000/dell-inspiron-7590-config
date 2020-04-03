@@ -84,3 +84,11 @@ Check the [wiki page](https://github.com/JackHack96/dell-xps-9570-ubuntu-respin/
 [virtualbox](https://www.virtualbox.org/wiki/Download_Old_Builds_6_0)  
 [k2](https://github.com/Kurgol/keychron/blob/master/k2.md)  
 numlock: sudo gedit /usr/share/X11/xkb/keycodes/evdev, change NMLK to 770  
+```
+  #lockDialogGroup {
+   background: #2c001e url(file:///home/yangl/Pictures/wallpapers/planet_earth_4k-2560x1440-blur.jpg);
+   background-repeat: no-repeat; 
+   background-size: cover;
+   background-position: center;
+}  
+```
