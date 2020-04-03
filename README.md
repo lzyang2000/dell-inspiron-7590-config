@@ -80,3 +80,5 @@ Check the [wiki page](https://github.com/JackHack96/dell-xps-9570-ubuntu-respin/
 [icon pack](https://www.gnome-look.org/p/1102582/)  
 [wine chinese input](https://www.lulinux.com/archives/359)  
 [Sound-fix](https://www.linuxuprising.com/2018/06/fix-no-sound-dummy-output-issue-in.html)  
+[docker-fix](https://stackoverflow.com/questions/48957195/how-to-fix-docker-got-permission-denied-issue)
+[virtualbox](https://www.virtualbox.org/wiki/Download_Old_Builds_6_0)
