@@ -95,5 +95,6 @@ numlock: sudo gedit /usr/share/X11/xkb/keycodes/evdev, change NMLK to 770
 ```
 [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)  
 sudo apt-get install gnome-sushi  
-[sof](https://www.alsa-project.org/files/pub/misc/sof/)  
-It seems that adding "load-module module-alsa-source device=hw:0,7" to "/etc/pulse/default.pa" i have the mic recognized and working, see the attachment.  
+[sof](https://www.alsa-project.org/files/pub/misc/sof/) 
+Update /usr/lib/firmware/intel/sof and /usr/lib/firmware/intel/sof-tplg folder to the ones in the link above  
+It seems that adding "load-module module-alsa-source device=hw:0,7" to "/etc/pulse/default.pa" i have the mic recognized and working
