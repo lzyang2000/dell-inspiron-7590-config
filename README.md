@@ -99,4 +99,5 @@ sudo apt-get install gnome-sushi
 Update /usr/lib/firmware/intel/sof and /usr/lib/firmware/intel/sof-tplg folder to the ones in the link above  
 It seems that adding "load-module module-alsa-source device=hw:0,7" to "/etc/pulse/default.pa" i have the mic recognized and working  
 [ukuu](https://frank.kumro.io/installing-a-mainline-kernel-on-popos/)  
+[ukuu releases](https://github.com/teejee2008/ukuu/releases)
 [pin kernel](https://frank.kumro.io/stop-kernel-updates-on-pop-_os/)
