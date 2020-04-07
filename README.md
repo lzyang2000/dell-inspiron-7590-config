@@ -97,4 +97,6 @@ numlock: sudo gedit /usr/share/X11/xkb/keycodes/evdev, change NMLK to 770
 sudo apt-get install gnome-sushi  
 [sof](https://www.alsa-project.org/files/pub/misc/sof/)  
 Update /usr/lib/firmware/intel/sof and /usr/lib/firmware/intel/sof-tplg folder to the ones in the link above  
-It seems that adding "load-module module-alsa-source device=hw:0,7" to "/etc/pulse/default.pa" i have the mic recognized and working
+It seems that adding "load-module module-alsa-source device=hw:0,7" to "/etc/pulse/default.pa" i have the mic recognized and working  
+[ukuu](https://frank.kumro.io/installing-a-mainline-kernel-on-popos/)  
+[pin kernel](https://frank.kumro.io/stop-kernel-updates-on-pop-_os/)
