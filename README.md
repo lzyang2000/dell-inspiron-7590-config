@@ -75,9 +75,10 @@ Kernel Boot Options:. loglevel=0 pcie_aspm=force acpi_rev_override=1 mem_sleep_d
 Check the [wiki page](https://github.com/JackHack96/dell-xps-9570-ubuntu-respin/wiki/Troubleshooting) about it.
 
 ## Beautify
-[mac like](https://linuxconfig.org/how-to-install-macos-theme-on-ubuntu-20-04-focal-fossa-linux)
+[mac like](https://linuxconfig.org/how-to-install-macos-theme-on-ubuntu-20-04-focal-fossa-linux)  
 [Gnome login change](https://www.ostechnix.com/how-to-change-gdm-login-screen-background-in-ubuntu/)  
 [theme](https://www.gnome-look.org/p/1241688/)  
+[theme2](https://www.gnome-look.org/p/1275087/)  
 [icon pack](https://www.gnome-look.org/p/1102582/)  
 [wine chinese input](https://www.lulinux.com/archives/359)  
 [Sound-fix](https://www.linuxuprising.com/2018/06/fix-no-sound-dummy-output-issue-in.html)  
@@ -99,5 +100,5 @@ sudo apt-get install gnome-sushi
 Update /usr/lib/firmware/intel/sof and /usr/lib/firmware/intel/sof-tplg folder to the ones in the link above  
 It seems that adding "load-module module-alsa-source device=hw:0,7" to "/etc/pulse/default.pa" i have the mic recognized and working  
 [ukuu](https://frank.kumro.io/installing-a-mainline-kernel-on-popos/)  
-[ukuu releases](https://github.com/teejee2008/ukuu/releases)
-[pin kernel](https://frank.kumro.io/stop-kernel-updates-on-pop-_os/)
+[ukuu releases](https://github.com/teejee2008/ukuu/releases)  
+[pin kernel](https://frank.kumro.io/stop-kernel-updates-on-pop-_os/)  
