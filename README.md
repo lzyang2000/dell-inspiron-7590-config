@@ -80,7 +80,9 @@ Check the [wiki page](https://github.com/JackHack96/dell-xps-9570-ubuntu-respin/
 [theme](https://www.gnome-look.org/p/1241688/)  
 [theme2](https://www.gnome-look.org/p/1275087/)  
 [icon pack](https://www.gnome-look.org/p/1102582/)  
-[wine chinese input](https://www.lulinux.com/archives/359)  
+wine chinese input  
+最后想到了XMODIFIERS可能跟wine输入法有关，百度找到这个网页，在终端尝试输入export XMODIFIERS=@im=ibus | notepad，结果wine终于能输入中文了！折腾两天，终于找到答案，怎不让人兴奋！  
+答案：在/etc/profile的最后添加这一句： export XMODIFIERS=@im=ibus  
 [Sound-fix](https://www.linuxuprising.com/2018/06/fix-no-sound-dummy-output-issue-in.html)  
 [docker-fix](https://stackoverflow.com/questions/48957195/how-to-fix-docker-got-permission-denied-issue)  
 [virtualbox](https://www.virtualbox.org/wiki/Download_Old_Builds_6_0)  
