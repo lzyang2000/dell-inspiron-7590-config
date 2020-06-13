@@ -104,3 +104,4 @@ It seems that adding "load-module module-alsa-source device=hw:0,7" to "/etc/pul
 [ukuu](https://frank.kumro.io/installing-a-mainline-kernel-on-popos/)  
 [ukuu releases](https://github.com/teejee2008/ukuu/releases)  
 [pin kernel](https://frank.kumro.io/stop-kernel-updates-on-pop-_os/)  
+[ldac](https://github.com/EHfive/pulseaudio-modules-bt/issues/85#issuecomment-624503956)
